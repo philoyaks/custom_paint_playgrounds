@@ -34,14 +34,15 @@ class MyPainter extends CustomPainter {
       ..style = PaintingStyle.stroke;
 
     final path = Path()
-      ..moveTo(0, 0)
-      ..lineTo(0, size.height)
+      ..moveTo(30, 0)
+      ..arcToPoint(Offset(0, size.height), radius: const Radius.circular(30))
       ..lineTo(size.width, size.height)
       ..lineTo(size.width, 0)
       ..close();
 
     canvas.drawPath(path, paint);
-    
+    canvas.drawShadow(path, Colors.black, 10, true);
+    canvas.drawCircle(Offset(size.width * 0.5, size.height * 0.2), 50, paint);
   }
 
   @override
