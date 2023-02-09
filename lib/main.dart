@@ -1,3 +1,5 @@
+import 'package:custom_paint/example1.dart';
+import 'package:custom_paint/example2.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,42 +11,27 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        home: Scaffold(
-      body: Center(
-        child: Container(
-          height: 500,
-          width: 600,
-          color: Colors.red[50],
-          child: CustomPaint(
-            painter: MyPainter(),
-          ),
-        ),
-      ),
+    return MaterialApp(home: Scaffold(
+      body: Builder(builder: (context) {
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const Example1()));
+                },
+                child: const Text('Example1')),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const Example2()));
+                },
+                child: const Text('Example2'))
+          ],
+        );
+      }),
     ));
   }
-}
-
-class MyPainter extends CustomPainter {
-  @override
-  void paint(Canvas canvas, Size size) {
-    final paint = Paint()
-      ..color = Colors.blue
-      ..strokeWidth = 5
-      ..style = PaintingStyle.stroke;
-
-    final path = Path()
-      ..moveTo(30, 0)
-      ..arcToPoint(Offset(0, size.height), radius: const Radius.circular(30))
-      ..lineTo(size.width, size.height)
-      ..lineTo(size.width, 0)
-      ..close();
-
-    canvas.drawPath(path, paint);
-    canvas.drawShadow(path, Colors.black, 10, true);
-    canvas.drawCircle(Offset(size.width * 0.5, size.height * 0.2), 50, paint);
-  }
-
-  @override
-  bool shouldRepaint(CustomPainter oldDelegate) => false;
 }
