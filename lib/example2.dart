@@ -28,12 +28,26 @@ class _Example2State extends State<Example2> {
 class MyPainter2 extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    // TODO: implement paint
+    Path path = Path()
+      ..moveTo(size.width * 0.3, size.height * 0.5)
+      ..lineTo(size.width * 0.5, size.height * 0.5)
+      ..lineTo(size.width * 0.6, size.height * 0.3)
+      ..lineTo(size.width * 0.7, size.height * 0.5)
+      ..lineTo(size.width * 0.9, size.height * 0.5)
+      ..lineTo(size.width * 0.7, size.height * 0.65)
+      ..lineTo(size.width * 0.9, size.height * 0.9)
+      ..lineTo(size.width * 0.6, size.height * 0.7)
+      ..lineTo(size.width * 0.3, size.height * 0.9)
+      ..lineTo(size.width * 0.5, size.height * 0.65)
+      ..close();
+    Paint paint = Paint()
+      ..color = Colors.red
+      ..strokeWidth = 5
+      ..style = PaintingStyle.stroke;
+
+    canvas.drawPath(path, paint);
   }
 
   @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    // TODO: implement shouldRepaint
-    throw UnimplementedError();
-  }
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => true;
 }

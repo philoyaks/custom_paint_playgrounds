@@ -28,7 +28,13 @@ class MainApp extends StatelessWidget {
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) => const Example2()));
                 },
-                child: const Text('Example2'))
+                child: const Text('Example2')),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const Example2()));
+                },
+                child: const Text('Example3')),
           ],
         );
       }),
