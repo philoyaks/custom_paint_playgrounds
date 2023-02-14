@@ -9,9 +9,9 @@ class Example3 extends StatelessWidget {
       body: Center(
         child: Container(
           height: 500,
-          width: 600,
+                  width: 600,
           color: Colors.red[50],
-          child: CustomPaint(
+                child: CustomPaint(
             painter: MyPainter3(),
           ),
         ),
